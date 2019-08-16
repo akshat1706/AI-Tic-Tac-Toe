@@ -176,6 +176,11 @@ public class TicTacToe{
 
     //WHAT HAPPENS WHEN PLAYER PLAYS HIS TURN
     static void player_move(){
+         if(random_moves.size()==0){
+                    currentBoard();
+                    System.out.println("Match Draw !");
+                    System.exit(0);
+                    }
 
         int number = s.nextInt();   //Inputting the player move
         if(player.contains(ms.get(number))){
@@ -189,8 +194,10 @@ public class TicTacToe{
         update_game_board('p', number); //Updating the game board
         random_moves.remove(random_moves.indexOf(number));  //Updating arraylist for random moves
         currentBoard(); //Displaying the current board
-        System.out.println("Random moves list size : " + random_moves.size());
-        System.out.println(random_moves);
+        System.out.println("Player magic sqaure moves list : " + player);
+        System.out.println("Computer magic sqaure moves list : " + computer);
+        System.out.println("Your available moves : " + random_moves);
+        
 
     }
 
@@ -202,19 +209,50 @@ public class TicTacToe{
         
         //If player moves first
         if(turn==0){
+            if(random_moves.size()==0){
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                    System.out.println("Match Draw !");
+                    System.exit(0);
+                    }
             if(move_count==0){  //Hardcoding the 1st move 
             
                 if(gameBoard[1][1]!='X'){
                     update_game_board('c', 4);
                     computer.add(ms.get(4)); //Updating arraylist for computer moves
-                    random_moves.remove(4); //Updating random moves playlist 
+                    random_moves.remove(random_moves.indexOf(4)); //Updating random moves playlist 
                     currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
                 }
                 else{
                     update_game_board('c', 0);
                     computer.add(ms.get(0)); //Updating arraylist for computer moves
-                    random_moves.remove(0); //Updating random moves playlist 
+                    random_moves.remove(random_moves.indexOf(0)); //Updating random moves playlist 
                     currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                }
+            }
+            
+            else if(move_count==1){  //Hardcoding the 2nd move 
+            
+                if(gameBoard[0][2]!='X'){
+                    update_game_board('c', 2);
+                    computer.add(ms.get(2)); //Updating arraylist for computer moves
+                    random_moves.remove(random_moves.indexOf(2)); //Updating random moves playlist 
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                }
+                else{
+                    update_game_board('c', 6);
+                    computer.add(ms.get(6)); //Updating arraylist for computer moves
+                    random_moves.remove(random_moves.indexOf(6)); //Updating random moves playlist 
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
                 }
             }
         
@@ -222,23 +260,24 @@ public class TicTacToe{
             else{
                 if(winning_move()){
                 currentBoard();
+                System.out.println("Player magic sqaure moves list : " + player);
+                System.out.println("Computer magic sqaure moves list : " + computer);
                 System.out.println("Computer Won !!");
                 System.exit(0);
                 }
                 else if(blocking_move()) {
-                    if(random_moves.size()==0){
-                    currentBoard();
-                    System.out.println("Match Draw !");
-                    }
                     
-                    else{
                     currentBoard();
-                    }
-            }
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                    
+                }
             
             else {
                 random_move();
                 currentBoard();
+                System.out.println("Player magic sqaure moves list : " + player);
+                System.out.println("Computer magic sqaure moves list : " + computer);
             }
         }    
 
@@ -250,13 +289,22 @@ public class TicTacToe{
         
         //If computer moves first
         if(turn==1){
+            if(random_moves.size()==0){
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                    System.out.println("Match Draw !");
+                    System.exit(0);
+                    }
             
             if(move_count==0){  //Hardcoding the 1st move 
             
                 update_game_board('c', 4);
                 computer.add(ms.get(4)); //Updating arraylist for computer moves
-                random_moves.remove(4); //Updating random moves playlist 
+                random_moves.remove(random_moves.indexOf(4)); //Updating random moves playlist 
                 currentBoard();
+                System.out.println("Player magic sqaure moves list : " + player);
+                System.out.println("Computer magic sqaure moves list : " + computer);
                  
             }
             
@@ -265,44 +313,48 @@ public class TicTacToe{
                 if(gameBoard[0][0]!='X'){
                     update_game_board('c', 0);
                     computer.add(ms.get(0)); //Updating arraylist for computer moves
-                    random_moves.remove(0); //Updating random moves playlist 
+                    random_moves.remove(random_moves.indexOf(0)); //Updating random moves playlist 
                     currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
                 }
                 else{
                     update_game_board('c', 2);
                     computer.add(ms.get(2)); //Updating arraylist for computer moves
-                    random_moves.remove(2); //Updating random moves playlist 
+                    random_moves.remove(random_moves.indexOf(2)); //Updating random moves playlist 
                     currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                     System.out.println("Computer magic sqaure moves list : " + computer);
                 }
             }
             
             else{
                 if(winning_move()){
                 currentBoard();
+                System.out.println("Player magic sqaure moves list : " + player);
+                System.out.println("Computer magic sqaure moves list : " + computer);
                 System.out.println("Computer Won !!");
                 System.exit(0);
                 }
                 else if(blocking_move()) {
-                    if(random_moves.size()==0){
+                                        
                     currentBoard();
-                    System.out.println("Match Draw !");
-                    }
-                    
-                    else{
-                    currentBoard();
-                    }
-            }
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                   
+                }
             
             else {
                 random_move();
                 currentBoard();
+                System.out.println("Player magic sqaure moves list : " + player);
+                System.out.println("Computer magic sqaure moves list : " + computer);
             }
         }    
 
         System.out.println("The computer has made it's move.");
         System.out.println("Your available moves : " + random_moves);
-        
-            
+         
         }
 
     }
@@ -315,7 +367,6 @@ public class TicTacToe{
         System.out.println(randomNum);
         update_game_board('c',randomNum);
         computer.add(ms.get(randomNum));
-
 
     }
 
@@ -332,7 +383,6 @@ public class TicTacToe{
         moves_map.put(4,6);
         moves_map.put(3,7);
         moves_map.put(8,8);
-        moves_map.put(9,-1);
         moves_map.put(10,-1);
         moves_map.put(11,-1);
         moves_map.put(12,-1);
@@ -368,7 +418,6 @@ public class TicTacToe{
 
                 }
 
-
             }
 
         }
@@ -393,7 +442,6 @@ public class TicTacToe{
         moves_map.put(4,6);
         moves_map.put(3,7);
         moves_map.put(8,8);
-        moves_map.put(9,-1);
         moves_map.put(10,-1);
         moves_map.put(11,-1);
         moves_map.put(12,-1);
@@ -432,8 +480,6 @@ public class TicTacToe{
 
             }
 
-
-
         }
         if(pool==1){
             return true;
@@ -467,6 +513,9 @@ public class TicTacToe{
         //When player moves first
         if(turn==0){
             currentBoard();
+            System.out.println("Player magic sqaure moves list : " + player);
+            System.out.println("Computer magic sqaure moves list : " + computer);
+            System.out.println("Your available moves : " + random_moves);
             for(int i=0; i<6; i++){
             System.out.println("Please enter your move: ");
             player_move();
