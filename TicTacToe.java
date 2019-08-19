@@ -209,6 +209,7 @@ public class TicTacToe{
         
         //If player moves first
         if(turn==0){
+            
             if(random_moves.size()==0){
                     currentBoard();
                     System.out.println("Player magic sqaure moves list : " + player);
@@ -237,8 +238,45 @@ public class TicTacToe{
             }
             
             else if(move_count==1){  //Hardcoding the 2nd move 
-            
-                if(gameBoard[0][2]!='X'){
+                
+                if(blocking_move()) {
+                    
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                    
+                }
+                
+                else if((gameBoard[2][2]=='X')&&(gameBoard[0][0]=='X')){ //Hardcoded for Encirclement Tactic 
+                    update_game_board('c', 5);
+                    computer.add(ms.get(5)); //Updating arraylist for computer moves
+                    random_moves.remove(random_moves.indexOf(5)); //Updating random moves playlist 
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                }
+                
+                else if((gameBoard[0][2]=='X')&&(gameBoard[2][0]=='X')){    //Hardcoded for Encirclement Tactic 
+                    update_game_board('c', 5);
+                    computer.add(ms.get(5)); //Updating arraylist for computer moves
+                    random_moves.remove(random_moves.indexOf(5)); //Updating random moves playlist 
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                }
+                
+                
+                else if((gameBoard[2][1]=='X')&&(gameBoard[1][0]=='X')){
+                    update_game_board('c', 6);
+                    computer.add(ms.get(6)); //Updating arraylist for computer moves
+                    random_moves.remove(random_moves.indexOf(6)); //Updating random moves playlist 
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                }
+                
+                
+                else if(gameBoard[0][2]!='X'){
                     update_game_board('c', 2);
                     computer.add(ms.get(2)); //Updating arraylist for computer moves
                     random_moves.remove(random_moves.indexOf(2)); //Updating random moves playlist 
@@ -246,7 +284,8 @@ public class TicTacToe{
                     System.out.println("Player magic sqaure moves list : " + player);
                     System.out.println("Computer magic sqaure moves list : " + computer);
                 }
-                else{
+                
+                else {
                     update_game_board('c', 6);
                     computer.add(ms.get(6)); //Updating arraylist for computer moves
                     random_moves.remove(random_moves.indexOf(6)); //Updating random moves playlist 
@@ -273,12 +312,12 @@ public class TicTacToe{
                     
                 }
             
-            else {
-                random_move();
-                currentBoard();
-                System.out.println("Player magic sqaure moves list : " + player);
-                System.out.println("Computer magic sqaure moves list : " + computer);
-            }
+                else {
+                    random_move();
+                    currentBoard();
+                    System.out.println("Player magic sqaure moves list : " + player);
+                    System.out.println("Computer magic sqaure moves list : " + computer);
+                }
         }    
 
         System.out.println("The computer has made it's move.");
