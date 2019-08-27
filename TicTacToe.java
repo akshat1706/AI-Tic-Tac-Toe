@@ -503,6 +503,7 @@ public class TicTacToe{
             
             for(int j=i+1; j<computer.size(); j++){
 
+                //Getting difference number from the random moves lists 
                 int p = 15-(computer.get(i)+computer.get(j));
                 int boardNum = moves_map.get(p);
                 if(random_moves.contains(boardNum)){
